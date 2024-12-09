@@ -6,18 +6,41 @@ using UnityEngine;
 public class SlimeBouncing : MonoBehaviour
 {
     public Rigidbody2D rb_Player;
-    public Transform tf_Player;
-    public Transform slime_Block;
-    public float force = 2;
-    public bool rot1, rot2, rot3, rot4;
-    private Vector3 direction;
-    private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("Bateu");
-        if(rot1 == true){
-            //direction = new Vector3(-1, 1, 0);
-            direction = Vector3.Reflect(tf_Player.position, Vector3.right);
-            //direction = slime_Block.position;
-            rb_Player.AddForce(direction * force, ForceMode2D.Impulse);
+    public Transform tf_Player, slime_Block;
+    public float force = 3;
+    public Vector2 direction, reflectionDir;
+    public bool rotation = true;
+
+    private void Start() {
+        rb_Player = GameObject.Find("Player").GetComponent<Rigidbody2D>();
+        tf_Player = GameObject.Find("Player").GetComponent<Transform>();
+        reflectionDir = Vector2.right;
+    }
+
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.A)){
+            if(rotation == true && transform.rotation.z == 0) {
+                reflectionDir = Vector2.right;
+            }
+            else if(rotation == false && transform.rotation.z == -90){
+                reflectionDir = Vector2.left;
+            }
+            else if(rotation == true && transform.rotation.z == 180){
+                reflectionDir = Vector2.left;
+            }
+            else if(rotation == false && transform.rotation.z == 90){
+                reflectionDir = Vector2.right;
+            }
+            RotationSlime();
         }
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+            direction = Vector2.Reflect(tf_Player.position, reflectionDir);
+            rb_Player.AddForce(direction * force, ForceMode2D.Impulse);
+    }
+
+    private void RotationSlime(){
+        rotation = !rotation;
+        transform.Rotate(0,0,-90);
     }
 }
