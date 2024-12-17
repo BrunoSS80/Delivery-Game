@@ -12,13 +12,12 @@ public class SlimeBouncing : MonoBehaviour
     public bool rotation = true;
 
     private void Start() {
-        rb_Player = GameObject.Find("Player").GetComponent<Rigidbody2D>();
-        tf_Player = GameObject.Find("Player").GetComponent<Transform>();
+        rb_Player = GameObject.Find("Delivery").GetComponent<Rigidbody2D>();
+        tf_Player = GameObject.Find("Delivery").GetComponent<Transform>();
         reflectionDir = Vector2.right;
     }
 
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.A)){
             if(rotation == true && transform.rotation.z == 0) {
                 reflectionDir = Vector2.right;
             }
@@ -31,16 +30,18 @@ public class SlimeBouncing : MonoBehaviour
             else if(rotation == false && transform.rotation.z == 90){
                 reflectionDir = Vector2.right;
             }
-            RotationSlime();
-        }
     }
     private void OnTriggerEnter2D(Collider2D other) {
             direction = Vector2.Reflect(tf_Player.position, reflectionDir);
             rb_Player.AddForce(direction * force, ForceMode2D.Impulse);
     }
 
-    private void RotationSlime(){
+    public void RotationSlime(){
         rotation = !rotation;
         transform.Rotate(0,0,-90);
+    }
+
+    public void MoveSlime(){
+        
     }
 }
