@@ -5,19 +5,21 @@ using UnityEngine;
 
 public class SlimeBouncing : MonoBehaviour
 {
-    public Rigidbody2D rb_Player;
+    public Rigidbody2D rb_Player, rb_Slime;
     public Transform tf_Player, slime_Block;
     public float force = 3;
-    public Vector2 direction, reflectionDir;
+    public Vector2 direction, reflectionDir, mousePosition;
     public bool rotation = true;
 
     private void Start() {
         rb_Player = GameObject.Find("Delivery").GetComponent<Rigidbody2D>();
         tf_Player = GameObject.Find("Delivery").GetComponent<Transform>();
+        rb_Slime = gameObject.GetComponent<Rigidbody2D>();
         reflectionDir = Vector2.right;
     }
 
     private void Update() {
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if(rotation == true && transform.rotation.z == 0) {
                 reflectionDir = Vector2.right;
             }
@@ -41,7 +43,7 @@ public class SlimeBouncing : MonoBehaviour
         transform.Rotate(0,0,-90);
     }
 
-    public void MoveSlime(){
-        
+    public void OnMouseDrag() {
+        rb_Slime.transform.position = mousePosition;
     }
 }

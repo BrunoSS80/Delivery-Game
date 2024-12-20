@@ -127,7 +127,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4551450439985417414, guid: 08b6d74e984d79c4997845ce45107c1f, type: 3}
   m_PrefabInstance: {fileID: 1587495456}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2084321336}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f74f853b79fe6c4894aebf156f5ec60, type: 3}
@@ -550,6 +550,7 @@ GameObject:
   - component: {fileID: 1316224943}
   - component: {fileID: 1316224942}
   - component: {fileID: 1316224941}
+  - component: {fileID: 1316224944}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -619,7 +620,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1316224942}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 26103230}
+        m_TargetAssemblyTypeName: SlimeBouncing, Assembly-CSharp
+        m_MethodName: MoveSlime
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1316224942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -658,6 +671,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1316224939}
   m_CullTransparentMesh: 1
+--- !u!114 &1316224944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316224939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f74f853b79fe6c4894aebf156f5ec60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb_Player: {fileID: 0}
+  rb_Slime: {fileID: 0}
+  tf_Player: {fileID: 0}
+  slime_Block: {fileID: 0}
+  force: 3
+  direction: {x: 0, y: 0}
+  reflectionDir: {x: 0, y: 0}
+  mousePosition: {x: 0, y: 0}
+  rotation: 1
 --- !u!4 &1407330985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7220003114263373202, guid: 08b6d74e984d79c4997845ce45107c1f, type: 3}
@@ -996,7 +1030,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7220003114263373202, guid: 08b6d74e984d79c4997845ce45107c1f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1452902301}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3082351563495457451, guid: 08b6d74e984d79c4997845ce45107c1f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2084321339}
   m_SourcePrefab: {fileID: 100100000, guid: 08b6d74e984d79c4997845ce45107c1f, type: 3}
 --- !u!1 &1623628023
 GameObject:
@@ -1300,6 +1337,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2084321336 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3082351563495457451, guid: 08b6d74e984d79c4997845ce45107c1f, type: 3}
+  m_PrefabInstance: {fileID: 1587495456}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &2084321339
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084321336}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
