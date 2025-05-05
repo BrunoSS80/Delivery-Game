@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SlimeBouncing : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class SlimeBouncing : MonoBehaviour
     public float force = 3;
     public Vector2 direction, reflectionDir;
     public bool rotation = true;
+    public int moveDistance = 0;
 
     private void Start() {
         rb_Player = GameObject.Find("Delivery").GetComponent<Rigidbody2D>();
@@ -39,5 +42,11 @@ public class SlimeBouncing : MonoBehaviour
     public void RotationSlime(){
         rotation = !rotation;
         transform.Rotate(0,0,-90);
+    }
+    public void MoveObjX(int moveX){
+        transform.position = transform.position + new Vector3(moveX, 0);
+    }
+    public void MoveObjY(int moveY){
+        transform.position = transform.position + new Vector3(0, moveY);
     }
 }
