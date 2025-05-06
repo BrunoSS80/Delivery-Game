@@ -7,7 +7,7 @@ public class ActiveMenus : MonoBehaviour
     public Canvas canvas;
     public bool menuOn = false;
     
-    private void OnMouseUp() {
+    public void OnMouseUp() {
         canvas.enabled = !canvas.enabled;
 
         if(canvas.enabled == true){

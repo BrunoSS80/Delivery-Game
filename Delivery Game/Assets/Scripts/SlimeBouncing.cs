@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class SlimeBouncing : MonoBehaviour
 {
     public Rigidbody2D rb_Player;
-    public Transform tf_Player, slime_Block;
+    public Transform tf_Player;
     public float force = 3;
     public Vector2 direction, reflectionDir;
     public bool rotation = true;
@@ -44,7 +44,10 @@ public class SlimeBouncing : MonoBehaviour
         transform.Rotate(0,0,-90);
     }
     public void MoveObjX(int moveX){
-        transform.position = transform.position + new Vector3(moveX, 0);
+        if(transform.localRotation.z == -90){
+            transform.position = transform.position + new Vector3(0, moveX);
+        }
+        
     }
     public void MoveObjY(int moveY){
         transform.position = transform.position + new Vector3(0, moveY);
