@@ -8,7 +8,7 @@ public class MoveBall : MonoBehaviour
 {
     public Rigidbody2D rb_Ball;
     public float force = 4;
-    public Transform inicialForce, moveForce, maxForce;
+    public Transform moveForce, maxForce;
     public Vector3 direction, scanPos, screenPoint, offset;
     void Start()
     {
