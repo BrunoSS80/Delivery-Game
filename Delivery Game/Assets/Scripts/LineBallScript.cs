@@ -6,20 +6,39 @@ public class LineBallScript : MonoBehaviour
 {
     private LineRenderer lineRenderer;
     private MoveBall moveBall;
-    private Vector3 distBall;
+    public Transform inicialDirection;
+    public Vector2 launchDirection;
+    public float launchForce, timeBetweenPoints, maxForce;
+    public int lineSegmentCount = 30;
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
         moveBall = GameObject.Find("Delivery").GetComponent<MoveBall>();
-        lineRenderer.positionCount = 2;
-
+        lineRenderer.positionCount = lineSegmentCount;
+        timeBetweenPoints = 0.1f;
     }
 
     void Update()
     {
-        distBall = moveBall.transform.position - moveBall.moveForce.transform.position;
-        Debug.Log(distBall);
-        lineRenderer.SetPosition(0, moveBall.transform.position);
-        lineRenderer.SetPosition(1, distBall);
+        inicialDirection = moveBall.transform;
+        launchDirection = -moveBall.moveForce.position;
+        launchForce = Mathf.Clamp(moveBall.moveForce.position.magnitude, 0, maxForce);
+        DrawnLine();
+    }
+
+    void DrawnLine()
+    {
+        Vector2 startPosition = inicialDirection.position;
+        Vector2 startVelocity = launchDirection.normalized * launchForce;
+        Vector3[] points = new Vector3[lineSegmentCount];
+
+        for (int i = 0; i < lineSegmentCount; i++)
+        {
+            float t = i * timeBetweenPoints;
+            Vector2 position = startPosition + startVelocity * t + 0.1f * Physics2D.gravity * t *t;
+            points[i] = position;
+        }
+
+        lineRenderer.SetPositions(points);
     }
 }

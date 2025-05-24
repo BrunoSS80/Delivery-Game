@@ -368,6 +368,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 161fa42564af6ef4592453941e15c4e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inicialDirection: {fileID: 0}
+  launchDirection: {x: 0, y: 0}
+  launchForce: 0
+  timeBetweenPoints: 0
+  maxForce: 5
+  lineSegmentCount: 10
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,7 +678,7 @@ Transform:
   m_GameObject: {fileID: 1568862799}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 6, z: 0}
+  m_LocalPosition: {x: -1, y: -1, z: 0}
   m_LocalScale: {x: 2.7715, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -773,8 +779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb_Ball: {fileID: 1623628025}
-  force: 2.5
-  inicialForce: {fileID: 0}
+  force: 0
   moveForce: {fileID: 142605120}
   maxForce: {fileID: 1521265669}
   direction: {x: 2, y: 2, z: 0}
@@ -842,7 +847,7 @@ Transform:
   m_GameObject: {fileID: 1623628023}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.49, y: -0.8, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
