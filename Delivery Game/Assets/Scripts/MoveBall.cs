@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class MoveBall : MonoBehaviour
 {
@@ -28,6 +25,7 @@ public class MoveBall : MonoBehaviour
         moveForce.transform.position = screenPoint;
         //Vector3 force = screenPoint - offset;
         force = Vector3.Distance(screenPoint, maxForce.position);
+        force *= 1.08f;
         if (force > maxForce.position.magnitude)
         {
             force = 3;
