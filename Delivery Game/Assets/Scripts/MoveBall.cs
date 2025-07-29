@@ -26,13 +26,15 @@ public class MoveBall : MonoBehaviour
         moveForce.transform.position = screenPoint;
         //Vector3 force = screenPoint - offset;
         force = Vector3.Distance(moveForce.transform.position, transform.position);
-        Debug.Log(transform.position + ","+ force);
+        Debug.Log(transform.position + "," + force);
         //force *= 1.08f;
         if (force > maxForce.transform.localPosition.magnitude)
         {
             force = 3;
         }
-        direction = moveForce.transform.position;
+        direction.x = Mathf.Clamp(moveForce.transform.localPosition.x, -4.5f, 4.5f);
+        direction.y = Mathf.Clamp(moveForce.transform.localPosition.y, -4.5f, 4.5f);
+        //direction = moveForce.transform.position;
         /*if (moveForce.transform.position.y > maxForce.transform.position.y)
         {
             direction = moveForce.transform.position;
