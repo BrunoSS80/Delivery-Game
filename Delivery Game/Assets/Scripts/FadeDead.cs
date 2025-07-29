@@ -9,10 +9,11 @@ public class FadeDead : MonoBehaviour
     public bool startClosing = false;
     public float closeSpeed = 200f;
     public RectTransform maskTransform;
-    public RawImage blackGroudOn;
+    public Canvas canvasDead;
 
     public void TriggerDeathFade(Vector2 worldPosition)
     {
+        canvasDead.enabled = true;
         Vector2 screenPos = Camera.main.WorldToScreenPoint(worldPosition);
         maskTransform.position = screenPos;
         maskTransform.sizeDelta = new Vector2(18000f, 18000f);

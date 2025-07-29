@@ -10,6 +10,10 @@ public class LehtalBlock : MonoBehaviour
 
     public FadeDead fadeDead;
 
+    void Awake()
+    {
+        
+    }
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (triggered) return;

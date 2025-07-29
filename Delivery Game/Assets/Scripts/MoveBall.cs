@@ -17,23 +17,26 @@ public class MoveBall : MonoBehaviour
     
     private void OnMouseDown() {
         scanPos = moveForce.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        offset = Camera.main.ScreenToWorldPoint(maxForce.transform.position);
+        //offset = Camera.main.ScreenToWorldPoint(maxForce.transform.position);
     }
 
-    private void OnMouseDrag() {
+    private void OnMouseDrag()
+    {
         screenPoint = scanPos + Camera.main.ScreenToWorldPoint(Input.mousePosition);
         moveForce.transform.position = screenPoint;
         //Vector3 force = screenPoint - offset;
-        force = Vector3.Distance(screenPoint, maxForce.position);
-        force *= 1.08f;
-        if (force > maxForce.position.magnitude)
+        force = Vector3.Distance(moveForce.transform.position, transform.position);
+        Debug.Log(transform.position + ","+ force);
+        //force *= 1.08f;
+        if (force > maxForce.transform.localPosition.magnitude)
         {
             force = 3;
         }
-        if (moveForce.transform.position.y > maxForce.transform.position.y)
+        direction = moveForce.transform.position;
+        /*if (moveForce.transform.position.y > maxForce.transform.position.y)
         {
             direction = moveForce.transform.position;
-        }
+        }*/
         /*else if (moveForce.transform.position.y <= maxForce.transform.position.y)
         {
             direction.y = maxForce.transform.position.y;

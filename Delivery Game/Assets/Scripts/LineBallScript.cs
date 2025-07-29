@@ -6,7 +6,7 @@ public class LineBallScript : MonoBehaviour
 {
     private LineRenderer lineRenderer;
     private MoveBall moveBall;
-    public Transform inicialDirection;
+    public Vector2 inicialDirection;
     public Vector2 launchDirection;
     public float launchForce, timeBetweenPoints, maxForce;
     public int lineSegmentCount = 30;
@@ -20,15 +20,15 @@ public class LineBallScript : MonoBehaviour
 
     void Update()
     {
-        inicialDirection = moveBall.transform;
-        launchDirection = -moveBall.moveForce.position;
-        launchForce = Mathf.Clamp(moveBall.moveForce.position.magnitude, 0, maxForce);
+        inicialDirection = transform.position;
+        launchDirection = -moveBall.moveForce.transform.localPosition;
+        launchForce = Mathf.Clamp(moveBall.moveForce.transform.localPosition.magnitude, 0, maxForce);
         DrawnLine();
     }
 
     void DrawnLine()
     {
-        Vector2 startPosition = inicialDirection.position;
+        Vector2 startPosition = inicialDirection;
         Vector2 startVelocity = launchDirection.normalized * launchForce;
         Vector3[] points = new Vector3[lineSegmentCount];
 

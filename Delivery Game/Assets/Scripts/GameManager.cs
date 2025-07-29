@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public FadeDead fadeDead;
 
     private void Awake()
     {
@@ -14,10 +15,13 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+        fadeDead = GetComponent<FadeDead>();
     }
 
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+
 }
