@@ -7,27 +7,23 @@ public class MoveBall : MonoBehaviour
     public Rigidbody2D rb_Ball;
     public float force;
     public Transform moveForce, maxForce;
-    public Vector3 direction, scanPos, screenPoint, offset;
+    public Vector3 direction, scanPos, screenPoint;
     void Start()
     {
         rb_Ball = GetComponent<Rigidbody2D>();
     }
     private void Update() {
     }
-    
-    private void OnMouseDown() {
-        scanPos = moveForce.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //offset = Camera.main.ScreenToWorldPoint(maxForce.transform.position);
-    }
 
+    private void OnMouseDown()
+    {
+        scanPos = moveForce.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
     private void OnMouseDrag()
     {
         screenPoint = scanPos + Camera.main.ScreenToWorldPoint(Input.mousePosition);
         moveForce.transform.position = screenPoint;
-        //Vector3 force = screenPoint - offset;
         force = Vector3.Distance(moveForce.transform.position, transform.position);
-        Debug.Log(transform.position + "," + force);
-        //force *= 1.08f;
         if (force > maxForce.transform.localPosition.magnitude)
         {
             force = 3;

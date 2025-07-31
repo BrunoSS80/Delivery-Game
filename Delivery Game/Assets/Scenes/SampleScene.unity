@@ -632,6 +632,7 @@ GameObject:
   - component: {fileID: 480304841}
   - component: {fileID: 480304843}
   - component: {fileID: 480304844}
+  - component: {fileID: 480304845}
   m_Layer: 0
   m_Name: LineDelivery
   m_TagString: Untagged
@@ -663,7 +664,7 @@ LineRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480304840}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -675,7 +676,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 1bea43e28a0bbdc4bb337c5ed06531d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -695,7 +696,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -1
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
@@ -704,8 +705,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.2162162
+        time: 0.07393646
+        value: 0.44594383
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -717,19 +718,19 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 0.9433962, g: 0.36044857, b: 0.36044857, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 0.27450982}
+      key2: {r: 1, g: 1, b: 1, a: 0}
+      key3: {r: 1, g: 1, b: 1, a: 0}
+      key4: {r: 1, g: 1, b: 1, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
       ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
+      ctime2: 36237
+      ctime3: 48188
+      ctime4: 61873
       ctime5: 0
       ctime6: 0
       ctime7: 0
@@ -742,15 +743,15 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
-    textureScale: {x: 1, y: 1}
-    shadowBias: 0.5
+    textureMode: 1
+    textureScale: {x: 2, y: 1}
+    shadowBias: 1
     generateLightingData: 0
   m_MaskInteraction: 0
   m_UseWorldSpace: 1
@@ -771,9 +772,30 @@ MonoBehaviour:
   inicialDirection: {x: 0, y: 0}
   launchDirection: {x: 0, y: 0}
   launchForce: 0
-  timeBetweenPoints: 0
+  timeBetweenPoints: 0.1
   maxForce: 5
-  lineSegmentCount: 10
+  lineSegmentCount: 15
+--- !u!95 &480304845
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480304840}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 215d9bc7e844e364cb343b4dc133c914, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1673,7 +1695,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1704,7 +1726,6 @@ MonoBehaviour:
   direction: {x: 2, y: 2, z: 0}
   scanPos: {x: 0, y: 0, z: 0}
   screenPoint: {x: 0, y: 0, z: 0}
-  offset: {x: 0, y: 0, z: 0}
 --- !u!212 &1623628027
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1766,7 +1787,7 @@ Transform:
   m_GameObject: {fileID: 1623628023}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: 0}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1899,7 +1920,7 @@ Transform:
   m_GameObject: {fileID: 1918939245}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.36302593, y: -6, z: 0}
+  m_LocalPosition: {x: 0.36302593, y: -1, z: 0}
   m_LocalScale: {x: 20.1807, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
