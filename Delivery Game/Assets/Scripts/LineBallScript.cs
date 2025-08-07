@@ -20,10 +20,19 @@ public class LineBallScript : MonoBehaviour
 
     void Update()
     {
-        inicialDirection = transform.position;
-        launchDirection = -moveBall.moveForce.transform.localPosition;
-        launchForce = Mathf.Clamp(moveBall.moveForce.transform.localPosition.magnitude, 0, maxForce);
-        DrawnLine();
+        if (moveBall.activeLineRenderer)
+        {
+            lineRenderer.enabled = true;
+            inicialDirection = transform.position;
+            launchDirection = -moveBall.moveForce.transform.localPosition;
+            launchForce = Mathf.Clamp(moveBall.moveForce.transform.localPosition.magnitude, 0, maxForce);
+            DrawnLine();
+        }
+
+        if (!moveBall.activeLineRenderer)
+        {
+            lineRenderer.enabled = false;
+        }
     }
 
     void DrawnLine()

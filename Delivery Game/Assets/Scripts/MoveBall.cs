@@ -8,6 +8,8 @@ public class MoveBall : MonoBehaviour
     public float force;
     public Transform moveForce, maxForce;
     public Vector3 direction, scanPos, screenPoint;
+    public LineBallScript lineBallScript;
+    public bool activeLineRenderer;
     void Start()
     {
         rb_Ball = GetComponent<Rigidbody2D>();
@@ -17,6 +19,7 @@ public class MoveBall : MonoBehaviour
 
     private void OnMouseDown()
     {
+        activeLineRenderer = true;
         scanPos = moveForce.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
     private void OnMouseDrag()
@@ -30,20 +33,13 @@ public class MoveBall : MonoBehaviour
         }
         direction.x = Mathf.Clamp(moveForce.transform.localPosition.x, -4.5f, 4.5f);
         direction.y = Mathf.Clamp(moveForce.transform.localPosition.y, -4.5f, 4.5f);
-        //direction = moveForce.transform.position;
-        /*if (moveForce.transform.position.y > maxForce.transform.position.y)
-        {
-            direction = moveForce.transform.position;
-        }*/
-        /*else if (moveForce.transform.position.y <= maxForce.transform.position.y)
-        {
-            direction.y = maxForce.transform.position.y;
-        }*/
     }
 
-    private void OnMouseUp() {
+    private void OnMouseUp()
+    {
+        rb_Ball.bodyType = RigidbodyType2D.Dynamic;
         rb_Ball.AddForce(-direction * force, ForceMode2D.Impulse);
-        //direction = Vector3.zero;
         moveForce.transform.position = transform.position;
+        activeLineRenderer = false;
     }
 }
