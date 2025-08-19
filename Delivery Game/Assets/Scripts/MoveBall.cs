@@ -8,13 +8,15 @@ public class MoveBall : MonoBehaviour
     public float force;
     public Transform moveForce, maxForce;
     public Vector3 direction, scanPos, screenPoint;
-    public LineBallScript lineBallScript;
     public bool activeLineRenderer;
+    public Vector2 lastVelocity;
     void Start()
     {
         rb_Ball = GetComponent<Rigidbody2D>();
     }
-    private void Update() {
+    private void Update()
+    {
+        lastVelocity = rb_Ball.velocity;
     }
 
     private void OnMouseDown()
