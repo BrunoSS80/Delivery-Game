@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
-using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class LehtalBlock : MonoBehaviour
@@ -9,11 +8,6 @@ public class LehtalBlock : MonoBehaviour
     private bool triggered = false;
 
     public FadeDead fadeDead;
-
-    void Awake()
-    {
-        
-    }
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (triggered) return;
