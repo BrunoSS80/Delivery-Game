@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public FadeDead fadeDead;
     public GameObject ball, claw;
     public bool clawMovingBall;
+    private MoveBall moveBall;
     private void Awake()
     {
         if (Instance == null)
@@ -23,6 +24,10 @@ public class GameManager : MonoBehaviour
         if (clawMovingBall == true)
         {
             ball.transform.position = claw.transform.position;
+        }
+        if (clawMovingBall == false)
+        {
+            ball.transform.position = ball.transform.position;
         }
     }
     public void ReloadScene()

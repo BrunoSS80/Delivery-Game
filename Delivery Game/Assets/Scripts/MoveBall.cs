@@ -19,7 +19,19 @@ public class MoveBall : MonoBehaviour
     }
     private void Update()
     {
-        lastVelocity = rb_Ball.linearVelocity;
+        if (GameManager.Instance.clawMovingBall == false)
+        {
+            lastVelocity.x = Mathf.Clamp(rb_Ball.linearVelocity.x, -4.5f, 4.5f);
+            lastVelocity.y = Mathf.Clamp(rb_Ball.linearVelocity.y, -4.5f, 4.5f);
+            rb_Ball.gravityScale = 1;
+        }
+        if (GameManager.Instance.clawMovingBall == true)
+        {
+            lastVelocity.x = 0;
+            lastVelocity.y = 0;
+            rb_Ball.gravityScale = 0;
+        }
+        
     }
 
     private void DirectionBall()

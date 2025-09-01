@@ -25,7 +25,6 @@ public class ClawGrab : MonoBehaviour
         }
         if (transform.position == lastPoint.transform.position)
         {
-            Debug.Log(pointB.name);
             GameManager.Instance.clawMovingBall = false;
         }
     }
