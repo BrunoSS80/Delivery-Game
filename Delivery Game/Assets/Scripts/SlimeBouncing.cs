@@ -27,7 +27,7 @@ public class SlimeBouncing : MonoBehaviour
             float speed = velocity.magnitude;
             speed = Mathf.Max(speed * speedMultiplier, minSpeed);
 
-            rb.velocity = reflected * speed;
+            rb.linearVelocity = reflected * speed;
         }
     }
 

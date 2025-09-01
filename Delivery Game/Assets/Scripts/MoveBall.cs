@@ -19,7 +19,7 @@ public class MoveBall : MonoBehaviour
     }
     private void Update()
     {
-        lastVelocity = rb_Ball.velocity;
+        lastVelocity = rb_Ball.linearVelocity;
     }
 
     private void DirectionBall()

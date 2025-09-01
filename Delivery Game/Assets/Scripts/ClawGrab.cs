@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using TreeEditor;
 using UnityEngine;
 
 public class ClawGrab : MonoBehaviour
 {
-    public GameObject pointA, pointB, target;
+    public GameObject pointA, pointB, target, lastPoint;
     public float duration;
     public float elapsedTime,t;
     public bool upClaw;
@@ -16,13 +15,18 @@ public class ClawGrab : MonoBehaviour
         target = pointA;
         startPosition = transform.position;
     }
-    void FixedUpdate()
+    void Update()
     {
         if (upClaw)
         {
             elapsedTime += Time.deltaTime;
             t = elapsedTime / duration;
             transform.position = Vector2.Lerp(startPosition, target.transform.position, t);
+        }
+        if (transform.position == lastPoint.transform.position)
+        {
+            Debug.Log(pointB.name);
+            GameManager.Instance.clawMovingBall = false;
         }
     }
 
@@ -31,6 +35,7 @@ public class ClawGrab : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             upClaw = true;
+            GameManager.Instance.clawMovingBall = true;
         }
         if (collision.CompareTag("PointA"))
         {
