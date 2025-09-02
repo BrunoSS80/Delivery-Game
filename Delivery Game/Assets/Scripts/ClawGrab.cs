@@ -19,8 +19,9 @@ public class ClawGrab : MonoBehaviour
     {
         if (upClaw)
         {
+            float duration = Vector2.Distance(startPosition, target.transform.position);
             elapsedTime += Time.deltaTime;
-            t = elapsedTime / duration;
+            t = elapsedTime / (duration/4);
             transform.position = Vector2.Lerp(startPosition, target.transform.position, t);
         }
         if (transform.position == lastPoint.transform.position)
