@@ -6,8 +6,8 @@ public class SlimeBouncing : MonoBehaviour
 {
     public bool rotation = true;
     public Canvas canvasButtons;
-    public float speedMultiplier = 1f; // 1 = mantém, >1 acelera
-    public float minSpeed = 3f;        // velocidade mínima pós-reflexo
+    public float speedMultiplier = 1f; 
+    public float minSpeed = 3f;        
     private void Update()
     {
         canvasButtons.transform.position = new Vector3(transform.position.x + 2, transform.position.y + 0.366f);
@@ -15,7 +15,7 @@ public class SlimeBouncing : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Rigidbody2D rb = collision.rigidbody;
-        if (rb == null) return; // só funciona se o objeto tiver Rigidbody2D
+        if (rb == null) return;
         Vector2 velocity = rb.GetComponent<MoveBall>().lastVelocity;
 
         if (collision.contactCount > 0)
