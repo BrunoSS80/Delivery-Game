@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public FadeDead fadeDead;
-    public GameObject ball, claw;
-    public bool clawMovingBall;
+    public GameObject ball, claw, grid;
+    public bool clawMovingBall, gridOn;
     private MoveBall moveBall;
     private void Awake()
     {
@@ -33,5 +33,10 @@ public class GameManager : MonoBehaviour
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void DesableGrid() {
+        grid.SetActive(gridOn);
+        gridOn = !gridOn;
     }
 }
