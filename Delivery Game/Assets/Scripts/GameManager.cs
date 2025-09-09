@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject ball, claw, grid;
     public bool clawMovingBall, gridOn;
     private MoveBall moveBall;
+    public Transform moveObjectUI;
     private void Awake()
     {
         if (Instance == null)
@@ -35,8 +36,20 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void DesableGrid() {
+    public void DesableGrid()
+    {
         grid.SetActive(gridOn);
         gridOn = !gridOn;
+    }
+    
+    public void RotateBlock()
+    {
+        moveObjectUI.Rotate(0, 0, -90);
+    }
+    public void MoveObjX(int moveX){
+        moveObjectUI.position = moveObjectUI.position + new Vector3(moveX, 0);
+    }
+    public void MoveObjY(int moveY){
+        moveObjectUI.position = moveObjectUI.position + new Vector3(0, moveY);
     }
 }

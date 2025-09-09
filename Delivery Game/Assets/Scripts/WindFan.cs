@@ -6,12 +6,23 @@ public class WindFan : MonoBehaviour
 {
     public float windForce = 1f;
     public Vector2 windDirection = Vector2.up;
+    public Transform selectedFan;
 
-    private void OnTriggerStay2D(Collider2D other) {
+    private void Start()
+    {
+        selectedFan = this.transform;
+    }
+    private void OnTriggerStay2D(Collider2D other)
+    {
         if (other.CompareTag("Player"))
         {
             Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
             rb.AddForce(windDirection.normalized * windForce, ForceMode2D.Impulse);
         }
+    }
+
+    void OnMouseUp()
+    {
+        GameManager.Instance.moveObjectUI = selectedFan;
     }
 }

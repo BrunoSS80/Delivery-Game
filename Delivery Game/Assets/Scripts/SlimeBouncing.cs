@@ -4,14 +4,13 @@ using UnityEngine.UI;
 
 public class SlimeBouncing : MonoBehaviour
 {
-    public bool rotation = true;
-    public Canvas canvasButtons;
     public float speedMultiplier = 1f; 
-    public float minSpeed = 3f;        
-    private void Update()
-    {
-        canvasButtons.transform.position = new Vector3(transform.position.x + 2, transform.position.y + 0.366f);
-    }
+    public float minSpeed = 3f;
+    private Transform selected;
+
+    private void Start() {
+        selected = this.transform;
+    }    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Rigidbody2D rb = collision.rigidbody;
@@ -31,14 +30,8 @@ public class SlimeBouncing : MonoBehaviour
         }
     }
 
-    public void RotationSlime(){
-        rotation = !rotation;
-        transform.Rotate(0,0,-90);
-    }
-    public void MoveObjX(int moveX){
-        transform.position = transform.position + new Vector3(moveX, 0);
-    }
-    public void MoveObjY(int moveY){
-        transform.position = transform.position + new Vector3(0, moveY);
+    void OnMouseUp()
+    {
+        GameManager.Instance.moveObjectUI = selected;
     }
 }

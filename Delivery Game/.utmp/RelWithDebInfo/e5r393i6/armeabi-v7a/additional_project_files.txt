@@ -1,0 +1,1 @@
+C:\Users\tronc\OneDrive\Documentos\Projetos\Delivery-Game\Delivery Game\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\FramePacing\UnitySwappyWrapper.h
