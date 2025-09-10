@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public bool clawMovingBall, gridOn;
     private MoveBall moveBall;
     public Transform moveObjectUI;
+    public Camera mainCamera, secundCamera;
     private void Awake()
     {
         if (Instance == null)
@@ -35,11 +36,20 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
-    public void DesableGrid()
+    private void DesableGrid()
     {
-        grid.SetActive(gridOn);
         gridOn = !gridOn;
+        grid.SetActive(gridOn);
+    }
+    private void FadeCameraCall()
+    {
+        mainCamera.depth = 0f;
+        secundCamera.depth = 1f;
+    }
+    public void EditButtonClicked()
+    {
+        DesableGrid();
+        FadeCameraCall();
     }
 
     public void RotateBlock()
@@ -47,7 +57,9 @@ public class GameManager : MonoBehaviour
         if (moveObjectTag.CompareTag("Slime"))
         {
             moveObjectUI.Rotate(0, 0, -90);
-        }else{
+        }
+        else
+        {
             moveObjectUI.Rotate(0, 0, -45);
         }
     }
