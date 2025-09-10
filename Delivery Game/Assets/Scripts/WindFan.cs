@@ -7,11 +7,8 @@ public class WindFan : MonoBehaviour
     public float windForce = 1f;
     public Vector2 windDirection = Vector2.up;
     public Transform selectedFan;
-
-    private void Start()
-    {
-        selectedFan = this.transform;
-    }
+    public GameObject selectedTag;
+    
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -24,5 +21,6 @@ public class WindFan : MonoBehaviour
     void OnMouseUp()
     {
         GameManager.Instance.moveObjectUI = selectedFan;
+        GameManager.Instance.moveObjectTag = selectedTag;
     }
 }

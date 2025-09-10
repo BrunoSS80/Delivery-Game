@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public FadeDead fadeDead;
-    public GameObject ball, claw, grid;
+    public GameObject ball, claw, grid,moveObjectTag;
     public bool clawMovingBall, gridOn;
     private MoveBall moveBall;
     public Transform moveObjectUI;
@@ -41,10 +41,15 @@ public class GameManager : MonoBehaviour
         grid.SetActive(gridOn);
         gridOn = !gridOn;
     }
-    
+
     public void RotateBlock()
     {
-        moveObjectUI.Rotate(0, 0, -90);
+        if (moveObjectTag.CompareTag("Slime"))
+        {
+            moveObjectUI.Rotate(0, 0, -90);
+        }else{
+            moveObjectUI.Rotate(0, 0, -45);
+        }
     }
     public void MoveObjX(int moveX){
         moveObjectUI.position = moveObjectUI.position + new Vector3(moveX, 0);

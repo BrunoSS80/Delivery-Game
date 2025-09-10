@@ -7,9 +7,12 @@ public class SlimeBouncing : MonoBehaviour
     public float speedMultiplier = 1f; 
     public float minSpeed = 3f;
     private Transform selected;
+    private GameObject selectedTag;
 
-    private void Start() {
+    private void Start()
+    {
         selected = this.transform;
+        selectedTag = this.gameObject;
     }    
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -33,5 +36,6 @@ public class SlimeBouncing : MonoBehaviour
     void OnMouseUp()
     {
         GameManager.Instance.moveObjectUI = selected;
+        GameManager.Instance.moveObjectTag = selectedTag;
     }
 }
