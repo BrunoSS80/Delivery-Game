@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public FadeDead fadeDead;
-    public GameObject ball, claw, grid,moveObjectTag;
+    public GameObject ball, claw, grid, moveObjectTag, createBar, moveBar;
     public bool clawMovingBall, gridOn;
     private MoveBall moveBall;
     public Transform moveObjectUI;
@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
         }
         fadeDead = GetComponent<FadeDead>();
     }
-
     void Update()
     {
         if (clawMovingBall == true)
@@ -30,6 +29,17 @@ public class GameManager : MonoBehaviour
         if (clawMovingBall == false)
         {
             ball.transform.position = ball.transform.position;
+        }
+
+        if (moveObjectUI != null)
+        {
+            createBar.SetActive(false);
+            moveBar.SetActive(true);
+        }
+        else if (moveObjectUI == null)
+        {
+            createBar.SetActive(true);
+            moveBar.SetActive(false);
         }
     }
     public void ReloadScene()
@@ -51,7 +61,6 @@ public class GameManager : MonoBehaviour
         DesableGrid();
         FadeCameraCall();
     }
-
     public void RotateBlock()
     {
         if (moveObjectTag.CompareTag("Slime"))
@@ -64,6 +73,7 @@ public class GameManager : MonoBehaviour
         }
     }
     public void MoveObjX(int moveX){
+        
         moveObjectUI.position = moveObjectUI.position + new Vector3(moveX, 0);
     }
     public void MoveObjY(int moveY){
