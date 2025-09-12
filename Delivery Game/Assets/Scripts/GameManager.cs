@@ -7,11 +7,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public FadeDead fadeDead;
-    public GameObject ball, claw, grid, moveObjectTag, createBar, moveBar;
+    public GameObject ball, claw, grid, moveObjectTag, createBar, moveBar, editBar, edtiButton, launchButton;
     public bool clawMovingBall, gridOn;
     private MoveBall moveBall;
     public Transform moveObjectUI;
     public Camera mainCamera, secundCamera;
+    public bool editMode;
     private void Awake()
     {
         if (Instance == null)
@@ -31,12 +32,12 @@ public class GameManager : MonoBehaviour
             ball.transform.position = ball.transform.position;
         }
 
-        if (moveObjectUI != null)
+        if (moveObjectUI != null && editMode == true)
         {
             createBar.SetActive(false);
             moveBar.SetActive(true);
         }
-        else if (moveObjectUI == null)
+        else if (moveObjectUI == null && editMode == true)
         {
             createBar.SetActive(true);
             moveBar.SetActive(false);
@@ -53,8 +54,23 @@ public class GameManager : MonoBehaviour
     }
     private void FadeCameraCall()
     {
-        mainCamera.depth = 0f;
-        secundCamera.depth = 1f;
+        if (!editMode)
+        {
+            mainCamera.depth = 0f;
+            secundCamera.depth = 1f;
+            editBar.SetActive(true);
+            edtiButton.transform.position = new Vector2(30, 110);
+            launchButton.SetActive(false);
+        }
+        else if (editMode)
+        {
+            mainCamera.depth = 1f;
+            secundCamera.depth = 0f;
+            editBar.SetActive(false);
+            edtiButton.transform.position = new Vector2(20, 20.3f);
+            launchButton.SetActive(true);  
+        }
+        editMode = !editMode;
     }
     public void EditButtonClicked()
     {

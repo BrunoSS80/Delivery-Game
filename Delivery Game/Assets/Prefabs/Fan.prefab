@@ -336,7 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a368ecda97fb050478a884b06391804b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windForce: 1
+  windForce: 0.7
   windDirection: {x: 0, y: 1}
   selectedFan: {fileID: 4963619689683587597}
   selectedTag: {fileID: 8382072634824460391}
