@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
             mainCamera.depth = 0f;
             secundCamera.depth = 1f;
             editBar.SetActive(true);
-            edtiButton.transform.position = new Vector2(30, 110);
+            edtiButton.transform.position = new Vector2(edtiButton.transform.position.x, edtiButton.transform.position.y + 65f);
             launchButton.SetActive(false);
         }
         else if (editMode)
@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
             mainCamera.depth = 1f;
             secundCamera.depth = 0f;
             editBar.SetActive(false);
-            edtiButton.transform.position = new Vector2(20, 20.3f);
+            edtiButton.transform.position = new Vector2(edtiButton.transform.position.x, edtiButton.transform.position.y - 65f);
             launchButton.SetActive(true);  
         }
         editMode = !editMode;
