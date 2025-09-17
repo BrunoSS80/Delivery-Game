@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
             secundCamera.depth = 0f;
             editBar.SetActive(false);
             edtiButton.transform.position = new Vector2(edtiButton.transform.position.x, edtiButton.transform.position.y - 65f);
-            launchButton.SetActive(true);  
+            launchButton.SetActive(true);
         }
         editMode = !editMode;
     }
@@ -85,14 +85,21 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            moveObjectUI.Rotate(0, 0, -45);
+            moveObjectUI.transform.Rotate(0, 0, -45f, Space.Self);
         }
     }
-    public void MoveObjX(int moveX){
-        
+    public void MoveObjX(int moveX)
+    {
+
         moveObjectUI.position = moveObjectUI.position + new Vector3(moveX, 0);
     }
-    public void MoveObjY(int moveY){
+    public void MoveObjY(int moveY)
+    {
         moveObjectUI.position = moveObjectUI.position + new Vector3(0, moveY);
+    }
+    public void ConfirmButton()
+    {
+        moveObjectTag = null;
+        moveObjectUI = null;
     }
 }
