@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     public Transform moveObjectUI;
     public Camera mainCamera, secundCamera;
     public bool editMode;
+    public Button launchBt;
     private void Awake()
     {
         if (Instance == null)
@@ -59,7 +61,7 @@ public class GameManager : MonoBehaviour
             mainCamera.depth = 0f;
             secundCamera.depth = 1f;
             editBar.SetActive(true);
-            edtiButton.transform.position = new Vector2(edtiButton.transform.position.x, edtiButton.transform.position.y + 65f);
+            edtiButton.transform.position = new Vector2(edtiButton.transform.position.x, edtiButton.transform.position.y + 120f); //65
             launchButton.SetActive(false);
         }
         else if (editMode)
@@ -67,7 +69,7 @@ public class GameManager : MonoBehaviour
             mainCamera.depth = 1f;
             secundCamera.depth = 0f;
             editBar.SetActive(false);
-            edtiButton.transform.position = new Vector2(edtiButton.transform.position.x, edtiButton.transform.position.y - 65f);
+            edtiButton.transform.position = new Vector2(edtiButton.transform.position.x, edtiButton.transform.position.y - 120f);//65
             launchButton.SetActive(true);
         }
         editMode = !editMode;
@@ -101,5 +103,9 @@ public class GameManager : MonoBehaviour
     {
         moveObjectTag = null;
         moveObjectUI = null;
+    }
+    public void desableLaunchButton()
+    {
+        launchBt.interactable = false;
     }
 }
