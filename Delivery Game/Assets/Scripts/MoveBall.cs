@@ -52,7 +52,7 @@ public class MoveBall : MonoBehaviour
             rb_Ball.AddForce(-direction * force, ForceMode2D.Impulse);
             activeLineRenderer = false;
             launched = !launched;
-            GameManager.Instance.desableLaunchButton();
+            GameManager.Instance.DesableLaunchButton();
         }
 
     }

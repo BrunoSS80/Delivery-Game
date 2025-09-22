@@ -104,8 +104,14 @@ public class GameManager : MonoBehaviour
         moveObjectTag = null;
         moveObjectUI = null;
     }
-    public void desableLaunchButton()
+    public void DesableLaunchButton()
     {
         launchBt.interactable = false;
+    }
+    public void DeleteBlock()
+    {
+        moveObjectTag.SetActive(false);
+        moveObjectTag = null;
+        moveObjectUI = null;
     }
 }
