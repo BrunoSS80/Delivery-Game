@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     public Transform moveObjectUI;
     public Camera mainCamera, secundCamera;
     public bool editMode;
+    public Button LaunchBt;
     private void Awake()
     {
         if (Instance == null)
@@ -101,5 +103,9 @@ public class GameManager : MonoBehaviour
     {
         moveObjectTag = null;
         moveObjectUI = null;
+    }
+    public void OffLaunchButton()
+    {
+        LaunchBt.interactable = false;
     }
 }

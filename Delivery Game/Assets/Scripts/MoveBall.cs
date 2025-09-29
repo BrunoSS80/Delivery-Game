@@ -8,7 +8,7 @@ public class MoveBall : MonoBehaviour
     public float force;
     public Transform moveForce, maxForce;
     public Vector3 direction, scanPos, screenPoint;
-    public bool activeLineRenderer;
+    public bool activeLineRenderer, launched;
     public Vector2 lastVelocity;
     void Start()
     {
@@ -46,8 +46,13 @@ public class MoveBall : MonoBehaviour
 
     public void ShootBall()
     {
-        rb_Ball.bodyType = RigidbodyType2D.Dynamic;
-        rb_Ball.AddForce(-direction * force, ForceMode2D.Impulse);
-        activeLineRenderer = false;
+        if (!launched)
+        {
+            rb_Ball.bodyType = RigidbodyType2D.Dynamic;
+            rb_Ball.AddForce(-direction * force, ForceMode2D.Impulse);
+            activeLineRenderer = false;
+            GameManager.Instance.OffLaunchButton();
+            launched = !launched;
+        }
     }
 }
