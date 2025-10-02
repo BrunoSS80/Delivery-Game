@@ -32,7 +32,6 @@ public class MoveBall : MonoBehaviour
         }
         
     }
-
     private void DirectionBall()
     {
         force = Vector3.Distance(moveForce.transform.position, transform.position);
@@ -50,6 +49,7 @@ public class MoveBall : MonoBehaviour
         {
             rb_Ball.bodyType = RigidbodyType2D.Dynamic;
             rb_Ball.AddForce(-direction * force, ForceMode2D.Impulse);
+            rb_Ball.AddTorque(20);
             activeLineRenderer = false;
             GameManager.Instance.OffLaunchButton();
             launched = !launched;
