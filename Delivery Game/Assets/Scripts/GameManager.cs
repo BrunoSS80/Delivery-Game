@@ -8,11 +8,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public FadeDead fadeDead;
-    public GameObject ball, claw, grid, moveObjectTag, createBar, moveBar, editBar, edtiButton, launchButton;
+    public GameObject ball, claw, grid, moveObjectTag, createBar, moveBar, cleanBar, edtiButton, launchButton;
     public bool clawMovingBall, gridOn;
     private MoveBall moveBall;
     public Transform moveObjectUI;
-    public Camera mainCamera, secundCamera;
+
     public bool editMode;
     public Button LaunchBt;
     private void Awake()
@@ -58,19 +58,13 @@ public class GameManager : MonoBehaviour
     {
         if (!editMode)
         {
-            mainCamera.depth = 0f;
-            secundCamera.depth = 1f;
-            editBar.SetActive(true);
-            edtiButton.transform.position = new Vector2(edtiButton.transform.position.x, edtiButton.transform.position.y + 65f);
-            launchButton.SetActive(false);
+            cleanBar.SetActive(true);
+            LaunchBt.interactable = false; ;
         }
         else if (editMode)
         {
-            mainCamera.depth = 1f;
-            secundCamera.depth = 0f;
-            editBar.SetActive(false);
-            edtiButton.transform.position = new Vector2(edtiButton.transform.position.x, edtiButton.transform.position.y - 65f);
-            launchButton.SetActive(true);
+            cleanBar.SetActive(false);
+            LaunchBt.interactable = true;
         }
         editMode = !editMode;
     }

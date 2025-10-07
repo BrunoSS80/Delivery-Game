@@ -30,7 +30,6 @@ public class MoveBall : MonoBehaviour
             lastVelocity.y = 0;
             rb_Ball.gravityScale = 0;
         }
-        
     }
     private void DirectionBall()
     {

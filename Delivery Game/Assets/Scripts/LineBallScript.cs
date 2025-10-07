@@ -5,17 +5,23 @@ using UnityEngine;
 public class LineBallScript : MonoBehaviour
 {
     private LineRenderer lineRenderer;
+    public Renderer rendererLine;
+    public string layerName;
     private MoveBall moveBall;
     public Vector2 inicialDirection;
     public Vector2 launchDirection;
     public float launchForce, timeBetweenPoints, maxForce;
-    public int lineSegmentCount = 30;
+    public int lineSegmentCount, orderLayer;
+
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
         moveBall = GameObject.Find("Delivery").GetComponent<MoveBall>();
         lineRenderer.positionCount = lineSegmentCount;
         timeBetweenPoints = 0.1f;
+        rendererLine = this.GetComponent<Renderer>();
+        rendererLine.sortingLayerName = layerName;
+        rendererLine.sortingOrder = orderLayer;
     }
 
     void Update()
@@ -33,6 +39,8 @@ public class LineBallScript : MonoBehaviour
         {
             lineRenderer.enabled = false;
         }
+
+
     }
 
     void DrawnLine()

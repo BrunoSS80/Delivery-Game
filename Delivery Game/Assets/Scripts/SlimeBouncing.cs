@@ -24,7 +24,7 @@ public class SlimeBouncing : MonoBehaviour
         {
             Vector2 normal = collision.contacts[0].normal;
             Vector2 reflected = Vector2.Reflect(velocity, normal).normalized;
-            reflected = new Vector2(reflected.x, reflected.y + 1);
+            reflected = new Vector2(reflected.x, reflected.y + 0.5f);
 
             float speed = velocity.magnitude;
             speed = Mathf.Max(speed * speedMultiplier, minSpeed);

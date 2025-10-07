@@ -6,14 +6,24 @@ public class WallReflect : MonoBehaviour
 {
     public float forceReflect = 1f;
     public Vector2 reflectDir;
-
-    void OnTriggerEnter2D(Collider2D collision)
+    public float speedMultiplier = 1f; 
+    public float minSpeed = 3f;
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Player"))
+        Rigidbody2D rb = collision.rigidbody;
+        if (rb == null) return;
+        Vector2 velocity = rb.GetComponent<MoveBall>().lastVelocity;
+
+        if (collision.contactCount > 0)
         {
-            Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
-            Vector2 direction = Vector2.Reflect(rb.position, reflectDir);
-            rb.AddForce(direction * forceReflect, ForceMode2D.Impulse);
+            Vector2 normal = collision.contacts[0].normal;
+            Vector2 reflected = Vector2.Reflect(velocity, normal).normalized;
+            //reflected = new Vector2(reflected.x, reflected.y + 1);
+
+            float speed = velocity.magnitude;
+            speed = Mathf.Max(speed * speedMultiplier, minSpeed);
+
+            rb.linearVelocity = reflected * speed;
         }
     }
 }
