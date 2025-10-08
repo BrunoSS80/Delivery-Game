@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 3416915222929874956}
   - component: {fileID: 3109030302363111030}
   - component: {fileID: 5624346398166315529}
+  - component: {fileID: 2902779159658256765}
   - component: {fileID: 2338833525291135546}
   m_Layer: 0
   m_Name: Slime
@@ -156,7 +157,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -205,6 +206,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 7
+--- !u!114 &2902779159658256765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5326324910758933870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e51ea87908f3c449c0a61092bb63e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LimitMove
+  objMoving: {fileID: 0}
 --- !u!114 &2338833525291135546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,8 +231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f74f853b79fe6c4894aebf156f5ec60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMultiplier: 1.2
-  minSpeed: 2
+  speedMultiplier: 1.4
+  minSpeed: 3
 --- !u!1 &6112534088989071095
 GameObject:
   m_ObjectHideFlags: 0

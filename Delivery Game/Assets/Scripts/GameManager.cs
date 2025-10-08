@@ -12,9 +12,8 @@ public class GameManager : MonoBehaviour
     public bool clawMovingBall, gridOn;
     private MoveBall moveBall;
     public Transform moveObjectUI;
-
     public bool editMode;
-    public Button LaunchBt;
+    public Button launchBt, editBt, confirmBt;
     private void Awake()
     {
         if (Instance == null)
@@ -58,13 +57,13 @@ public class GameManager : MonoBehaviour
     {
         if (!editMode)
         {
-            cleanBar.SetActive(true);
-            LaunchBt.interactable = false; ;
+            cleanBar.SetActive(false);
+            launchBt.interactable = false; ;
         }
         else if (editMode)
         {
-            cleanBar.SetActive(false);
-            LaunchBt.interactable = true;
+            cleanBar.SetActive(true);
+            launchBt.interactable = true;
         }
         editMode = !editMode;
     }
@@ -100,6 +99,6 @@ public class GameManager : MonoBehaviour
     }
     public void OffLaunchButton()
     {
-        LaunchBt.interactable = false;
+        launchBt.interactable = false;
     }
 }

@@ -6,12 +6,9 @@ public class WindFan : MonoBehaviour
 {
     public float windForce = 1f;
     public Vector2 windDirection;
-    public Transform selectedFan, fan;
-    public GameObject selectedTag;
+    public Transform fan;
 
-    void Update()
-    {
-    }
+    
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -51,11 +48,5 @@ public class WindFan : MonoBehaviour
             }
         rb.AddForce(windDirection.normalized * windForce, ForceMode2D.Impulse);
         }
-    }
-
-    void OnMouseUp()
-    {
-        GameManager.Instance.moveObjectUI = selectedFan;
-        GameManager.Instance.moveObjectTag = selectedTag;
     }
 }
