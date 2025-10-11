@@ -4,6 +4,7 @@ public class SpawnController : MonoBehaviour
 {
     public GameObject[] slimeSpawn;
     public GameObject[] fanSpawn;
+    public PointsController pointsController;
 
     public void SpawnObjSlime()
     {
@@ -13,6 +14,7 @@ public class SpawnController : MonoBehaviour
             {
                 slimeSpawn[i].SetActive(true);
                 slimeSpawn[i].transform.position = new Vector2(0, 0);
+                pointsController.AddSlime();
                 break;
             }
         }
@@ -26,6 +28,7 @@ public class SpawnController : MonoBehaviour
             {
                 fanSpawn[i].SetActive(true);
                 fanSpawn[i].transform.position = new Vector2(0, 0);
+                pointsController.AddFan();
                 break;
             }
         }

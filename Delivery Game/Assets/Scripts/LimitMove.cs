@@ -42,7 +42,7 @@ public class LimitMove : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (GameManager.Instance.editMode)
+        if (collision != null && GameManager.Instance.confirmBt != null && GameManager.Instance.editMode)
         {
             GameManager.Instance.editBt.interactable = true;
             GameManager.Instance.confirmBt.interactable = true;
