@@ -8,6 +8,7 @@ public class SlimeBouncing : MonoBehaviour
     public float minSpeed = 3f;
     private Transform selected;
     private GameObject selectedTag;
+    public Animator animatorSlime;
 
     private void Start()
     {
@@ -19,6 +20,7 @@ public class SlimeBouncing : MonoBehaviour
         Rigidbody2D rb = collision.rigidbody;
         if (rb == null) return;
         Vector2 velocity = rb.GetComponent<MoveBall>().lastVelocity;
+        animatorSlime.SetTrigger("Hit");
 
         if (collision.contactCount > 0)
         {

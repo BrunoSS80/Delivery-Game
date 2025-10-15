@@ -4,18 +4,21 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
-    public Animator menuAnimation, musicAnimation, backAnimation;
+    public Animator menuAnimation, restartAnimation ,musicAnimation, backAnimation;
     public bool menuActivated;
     public void MenuOptions()
     {
-        
-            backAnimation.SetTrigger("Slide");
-            musicAnimation.SetTrigger("Slide");
-        
-        
+        restartAnimation.SetTrigger("Slide");
+        backAnimation.SetTrigger("Slide");
+        musicAnimation.SetTrigger("Slide");
     }
     public void BackMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+    public void RestartLevel()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 }
