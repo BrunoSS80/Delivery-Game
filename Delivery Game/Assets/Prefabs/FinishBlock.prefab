@@ -159,6 +159,9 @@ MonoBehaviour:
   particleBox: {fileID: 4335123439219797543}
   particleBox2: {fileID: 3393145089895461939}
   particleBox3: {fileID: 7341170940359872632}
+  nextLevel: 2
+  levelNumber: 1
+  pointsController: {fileID: 0}
 --- !u!95 &4199762248649154340
 Animator:
   serializedVersion: 7

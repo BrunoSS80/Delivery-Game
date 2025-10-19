@@ -8,6 +8,8 @@ public class PointsController : MonoBehaviour
     [Header("Value for get Stars")]
     public float valStar3, valStar2, valStar1;
 
+    public int starsWoned;
+
     void Update()
     {
         CalcStars();

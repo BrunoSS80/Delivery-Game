@@ -5,7 +5,7 @@ public class FinishLevel : MonoBehaviour
 {
     public void FinishLvl()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("LevelSelector");
     }
     public void PlayLevel()
     {

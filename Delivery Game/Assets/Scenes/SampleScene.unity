@@ -5137,6 +5137,7 @@ MonoBehaviour:
   valStar3: 0.9
   valStar2: 0.7
   valStar1: 0.2
+  starsWoned: 2
 --- !u!4 &1721200707
 Transform:
   m_ObjectHideFlags: 0
@@ -6125,7 +6126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1115565125181414531, guid: a95096b61ddadc34c874f23ab9465b40, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 1115565125181414531, guid: a95096b61ddadc34c874f23ab9465b40, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6163,6 +6164,10 @@ PrefabInstance:
       propertyPath: finishUI
       value: 
       objectReference: {fileID: 659972603}
+    - target: {fileID: 5111727071590745410, guid: a95096b61ddadc34c874f23ab9465b40, type: 3}
+      propertyPath: pointsController
+      value: 
+      objectReference: {fileID: 1721200706}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
