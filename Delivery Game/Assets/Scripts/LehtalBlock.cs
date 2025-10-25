@@ -6,7 +6,6 @@ using UnityEngine;
 public class LehtalBlock : MonoBehaviour
 {
     private bool triggered = false;
-
     public FadeDead fadeDead;
     void OnTriggerEnter2D(Collider2D collision)
     {

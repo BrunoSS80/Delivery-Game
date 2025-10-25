@@ -11,6 +11,7 @@ public class FinishBlock : MonoBehaviour
     public int nextLevel;
     public int levelNumber;
     public PointsController pointsController;
+    private PlayerConfig playerConfig = new PlayerConfig();
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (triggered) return;
@@ -32,17 +33,16 @@ public class FinishBlock : MonoBehaviour
     public void Finished()
     {
         LevelManager.levelManager.SetCurrentLevel(nextLevel);
-        if (PlayerConfig.starsLevels.TryGetValue(levelNumber, out int val))
+        if (playerConfig.starsLevels.TryGetValue(levelNumber, out int val))
         {
             if (val < pointsController.starsWoned)
             {
-                PlayerConfig.starsLevels[levelNumber] = pointsController.starsWoned;
+                playerConfig.starsLevels[levelNumber] = pointsController.starsWoned;
             }
         }
         else
         {
-            PlayerConfig.starsLevels.Add(levelNumber, pointsController.starsWoned);
+            playerConfig.starsLevels[levelNumber] = pointsController.starsWoned;
         }
-        SceneManager.LoadScene("LevelSelector");
     }
 }

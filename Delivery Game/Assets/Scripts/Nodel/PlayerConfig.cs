@@ -4,7 +4,7 @@ using System.Collections.Generic;
 [Serializable]
 public class PlayerConfig
 {
-    public int currentLevel;
+    public int currentLevel =2 ;
 
-    public static Dictionary<int, int> starsLevels = new Dictionary<int, int>();
+    public Dictionary<int, int> starsLevels = new Dictionary<int, int>();
 }
