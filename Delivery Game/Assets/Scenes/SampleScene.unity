@@ -5137,7 +5137,7 @@ MonoBehaviour:
   valStar3: 0.9
   valStar2: 0.7
   valStar1: 0.2
-  starsWoned: 2
+  starsWoned: 5
 --- !u!4 &1721200707
 Transform:
   m_ObjectHideFlags: 0

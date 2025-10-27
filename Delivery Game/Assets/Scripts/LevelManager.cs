@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager levelManager;
-    private static int currentLevel = 1;
-    private PlayerConfig playerConfig = new PlayerConfig();
+    private int currentLevel = 1;
 
     public void Awake()
     {
@@ -16,7 +15,6 @@ public class LevelManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
-
     public int GetCurrentLevel()
     {
         return currentLevel;
@@ -27,17 +25,27 @@ public class LevelManager : MonoBehaviour
         if (newLevel > currentLevel)
         {
             currentLevel = newLevel;
-            playerConfig.currentLevel = newLevel;
-            Debug.Log(playerConfig.currentLevel);
+            SaveService.saveService.PlayerConfig.currentLevel = newLevel;
+            SaveService.saveService.SaveGame();
         }
     }
-    
+    public void SetOnLoadLevel(int loadedLevel)
+    {
+        currentLevel = loadedLevel;
+    }
     public void LoadLevel(int loadLevel)
     {
         if (loadLevel <= currentLevel)
         {
             SceneManager.LoadScene(loadLevel);
         }
-        else{ return; }
+        else { return; }
+    }
+    
+    public void SetStartLevel(int levelFinished, int starsWon)
+    {
+        SaveService.saveService.PlayerConfig.starsLevels[levelFinished] = starsWon;
+        Debug.Log($"Fez: {starsWon}");
+        SaveService.saveService.SaveGame();
     }
 }
