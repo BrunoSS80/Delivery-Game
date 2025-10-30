@@ -6,7 +6,7 @@ public class PointsController : MonoBehaviour
 {
     public float valFan, valSlime;
     [SerializeField]
-    private TextMeshProUGUI textSlimeValue, textSlimeQtd,textFanValue, textFanQtd;
+    private TextMeshProUGUI textSlimeValue, textSlimeQtd,textFanValue, textFanQtd, textSquarePoints;
     public Image imgBar, star1, star2, star3;
     [Header("Value for get Stars")]
     public float valStar3, valStar2, valStar1;
@@ -26,6 +26,7 @@ public class PointsController : MonoBehaviour
         CalcStars();
         textSlimeQtd.SetText($"{qtdSlime}");
         textFanQtd.SetText($"{qtdFan}");
+        textSquarePoints.SetText($"{imgBar.fillAmount * 100}");
     }
 
     public void AddFan()

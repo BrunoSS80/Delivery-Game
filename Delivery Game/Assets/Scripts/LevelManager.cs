@@ -12,8 +12,12 @@ public class LevelManager : MonoBehaviour
         if (levelManager == null)
         {
             levelManager = this;
+            DontDestroyOnLoad(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     public int GetCurrentLevel()
     {
