@@ -18,6 +18,7 @@ public class SaveService : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        LoadGame();
     }
     public PlayerConfig PlayerConfig => playerConfig;
     public void SaveGame()
